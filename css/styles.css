@@ -1,0 +1,33 @@
+.navbar-toggler-icon {
+  cursor: pointer;
+}
+
+.search-text-input {
+  margin-left: 2.5rem;
+}
+
+.team-stadium {
+  margin-bottom: 0.25rem;
+}
+
+.white-text {
+  color: white;
+}
+
+.list-group-item {
+  color: #00ccb8;
+}
+
+.list-group-item:hover {
+  color: #009688;
+}
+
+.bmd-layout-drawer > span {
+  padding-top: 10px;
+}
+
+.bmd-layout-drawer h3 {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
