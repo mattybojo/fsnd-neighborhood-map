@@ -55,6 +55,9 @@ function AppViewModel() {
   // one infowindow which will open at the marker that is clicked, and populate based
   // on that markers position.
   this.populateInfoWindow = function(marker) {
+    // Close the drawer, if open
+    $('.bmd-drawer-in').removeClass('bmd-drawer-in');
+    
     marker.setAnimation(google.maps.Animation.BOUNCE);
     setTimeout((function() {
       this.setAnimation(null);
