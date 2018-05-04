@@ -12,7 +12,7 @@ function AppViewModel() {
 
   this.initMap = function() {
     // Constructor creates a new map - only center and zoom are required.
-    this.map = new google.maps.Map(document.getElementById('map'), {
+    self.map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 40.7413549, lng: -73.9980244},
       zoom: 13
     });
@@ -57,7 +57,7 @@ function AppViewModel() {
   this.populateInfoWindow = function(marker) {
     // Close the drawer, if open
     $('.bmd-drawer-in').removeClass('bmd-drawer-in');
-    
+
     marker.setAnimation(google.maps.Animation.BOUNCE);
     setTimeout((function() {
       this.setAnimation(null);

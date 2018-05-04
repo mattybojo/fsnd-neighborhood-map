@@ -1,12 +1,14 @@
 $(document).ready(function() {
-  function setHeight() {
-    windowHeight = $(window).innerHeight();
+  function setMapDimensions() {
+    windowHeight = window.screen.height;
+    windowWidth = window.screen.width;
     $('#map').css('min-height', windowHeight);
+    $('#map').css('min-width', windowWidth);
   };
 
-  setHeight();
+  setMapDimensions();
 
   $(window).resize(function() {
-    setHeight();
+    setMapDimensions();
   });
 });

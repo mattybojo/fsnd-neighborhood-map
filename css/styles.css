@@ -14,11 +14,11 @@
   color: white;
 }
 
-.list-group-item {
+.list-group-item, .api-source > a {
   color: #00ccb8;
 }
 
-.list-group-item:hover {
+.list-group-item:hover, .api-source > a:hover {
   color: #009688;
 }
 
@@ -30,4 +30,13 @@
   padding-top: 0;
   padding-bottom: 0;
   margin-bottom: 0;
+}
+
+.api-source {
+  padding-left: 2.5rem;
+  padding-right: 3rem;
+}
+
+.container-fluid {
+  padding: 0;
 }
