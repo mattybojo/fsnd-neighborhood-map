@@ -1,57 +1,84 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!-- Required meta tags always come first -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>EPL Team Map</title>
 
-  <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+  <link rel="stylesheet"
+        href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
+        integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX"
+        crossorigin="anonymous">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
+
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-
-<div class="bmd-layout-container bmd-drawer-f-l">
-  <header class="bmd-layout-header">
-    <div class="navbar navbar-dark bg-dark">
-      <span class="navbar-toggler-icon" data-toggle="drawer" data-target="#dw-s1"></span>
-      <ul class="nav navbar-nav">
-        <li class="nav-item white-text">EPL Team Map</li>
-      </ul>
-    </div>
-  </header>
-  <div id="dw-s1" class="bmd-layout-drawer navbar-dark bg-dark">
-    <header>
-      <h3 class="navbar-brand white-text">Stadium List</h3>
+  <div class="bmd-layout-container bmd-drawer-f-l">
+    <!-- Navbar -->
+    <header class="bmd-layout-header">
+      <div class="navbar navbar-dark bg-dark">
+        <span class="navbar-toggler-icon" data-toggle="drawer" data-target="#drawer"></span>
+        <ul class="nav navbar-nav">
+          <li class="nav-item white-text">EPL Team Map</li>
+        </ul>
+      </div>
     </header>
-    <input class="search-text-input" placeholder="Filter stadiums..." data-bind="textInput: filterText, valueUpdate: afterkeydown">
-    <ul class="list-group" data-bind="foreach: filteredStadiums">
-      <a class="list-group-item" href="#" data-bind="text: title, click: $parent.populateInfoWindow"></a>
-    </ul>
-    <span class="api-source white-text">Data provided by <a class="api-url" href="football-data.org">football-data.org</a></span>
-  </div>
-  <main class="bmd-layout-content">
-    <div class="container-fluid">
-      <div id="map"></div>
+    <!-- Drawer -->
+    <div id="drawer" class="bmd-layout-drawer navbar-dark bg-dark">
+      <header>
+        <h3 class="navbar-brand white-text">Stadium List</h3>
+      </header>
+      <input class="search-text-input" placeholder="Filter stadiums..."
+             data-bind="textInput: filterText, valueUpdate: afterkeydown">
+      <ul class="list-group" data-bind="foreach: filteredStadiums">
+        <a class="list-group-item" href="#" data-bind="text: title, click: $parent.populateInfoWindow"></a>
+      </ul>
+      <span class="api-source white-text">Data provided by
+        <a class="api-url" href="football-data.org">football-data.org</a>
+      </span>
     </div>
-  </main>
-</div>
+    <!-- Page content -->
+    <main class="bmd-layout-content">
+      <div class="container-fluid">
+        <div id="map"></div>
+      </div>
+    </main>
+  </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js" integrity="sha256-owX7sroiO/O1a7h3a4X29A1g3QgqdNvijRQ7V5TH45M=" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
-<script src="js/markers.js"></script>
-<script src="js/app.js"></script>
-<script src="js/map-correction.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"
+    integrity="sha256-owX7sroiO/O1a7h3a4X29A1g3QgqdNvijRQ7V5TH45M="
+    crossorigin="anonymous"></script>
 
-<script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGfp9s-1pWNfdGKfAXPHGKZB9ZH5E5r9s&v=3&callback=initApp" onerror="gmapError()">
-</script>
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+
+  <script
+    src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"
+    integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
+    crossorigin="anonymous"></script>
+
+  <script
+    src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"
+    integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+
+  <script src="js/markers.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/map-correction.js"></script>
+
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGfp9s-1pWNfdGKfAXPHGKZB9ZH5E5r9s&v=3&callback=initApp"
+    onerror="gmapError()">
+  </script>
 
 </body>
 </html>

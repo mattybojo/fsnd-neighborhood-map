@@ -1,3 +1,4 @@
+// Objects representing each team's stadium
 var stadiums = [
   {
     title: 'Emirates Stadium',
